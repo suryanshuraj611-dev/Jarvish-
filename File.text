@@ -1,0 +1,91 @@
+
+---
+
+## **3. config.py**
+
+```python
+"""
+Configuration file for Jarvis AI Assistant
+"""
+
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# ==================== API KEYS ====================
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "your-api-key-here")
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY", "")
+WEATHER_API_KEY = os.getenv("WEATHER_API_KEY", "")
+
+# ==================== VOICE SETTINGS ====================
+VOICE_RECOGNITION_LANGUAGE = "en-US"
+SPEECH_RECOGNITION_TIMEOUT = 5  # seconds
+SPEECH_RECOGNITION_PHRASE_LIMIT = 10  # seconds
+WAKE_WORD = "jarvis"
+WAKE_WORD_SENSITIVITY = 0.8
+
+# ==================== TEXT-TO-SPEECH ====================
+TTS_ENGINE = "pyttsx3"  # pyttsx3 or gtts
+TTS_LANGUAGE = "en"
+TTS_SPEED = 150
+TTS_VOLUME = 0.9
+
+# ==================== AI SETTINGS ====================
+AI_MODEL = "gpt-3.5-turbo"
+AI_TEMPERATURE = 0.7
+MAX_TOKENS = 150
+CONTEXT_LENGTH = 5  # Remember last 5 interactions
+
+# ==================== DATABASE ====================
+DATABASE_PATH = "database/jarvis.db"
+ENABLE_HISTORY = True
+HISTORY_LIMIT = 1000
+
+# ==================== WEB INTERFACE ====================
+FLASK_HOST = "0.0.0.0"
+FLASK_PORT = 5000
+FLASK_DEBUG = True
+
+# ==================== AUTOMATION ====================
+ENABLE_AUTOMATION = True
+AUTOMATION_TIMEOUT = 10
+DANGEROUS_COMMANDS_ENABLED = False  # System shutdown, etc.
+
+# ==================== LOGGING ====================
+LOG_LEVEL = "INFO"  # DEBUG, INFO, WARNING, ERROR
+LOG_FILE = "logs/jarvis.log"
+
+# ==================== SYSTEM ====================
+SYSTEM_PROMPT = """
+You are Jarvis, an intelligent AI assistant inspired by Marvel's character.
+You are helpful, professional, and slightly witty. You can help with:
+- Answering questions
+- Controlling computer
+- Automating tasks
+- General conversation
+
+Always be concise and helpful.
+"""
+
+# ==================== APP PATHS (WINDOWS/LINUX/MAC) ====================
+APPS_PATH = {
+    "chrome": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" if os.name == 'nt' else "/usr/bin/google-chrome",
+    "firefox": "C:\\Program Files\\Mozilla Firefox\\firefox.exe" if os.name == 'nt' else "/usr/bin/firefox",
+    "notepad": "notepad.exe" if os.name == 'nt' else "gedit",
+    "calculator": "calc.exe" if os.name == 'nt' else "gnome-calculator",
+    "python": "python" if os.name == 'nt' else "python3",
+}
+
+# ==================== WEBSITES ====================
+COMMON_WEBSITES = {
+    "google": "https://www.google.com",
+    "youtube": "https://www.youtube.com",
+    "github": "https://www.github.com",
+    "stackoverflow": "https://stackoverflow.com",
+}
+
+# ==================== TIME ZONE ====================
+TIME_ZONE = "UTC"
+
+print("✅ Configuration loaded successfully!")

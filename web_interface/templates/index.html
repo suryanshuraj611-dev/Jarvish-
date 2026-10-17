@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarvis - AI Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🤖 Jarvis</h1>
+                <p>AI Assistant</p>
+            </div>
+            <div class="status" id="status">
+                <span class="status-dot"></span>
+                <span>Online</span>
+            </div>
+        </header>
+
+        <!-- Main Chat Area -->
+        <main class="chat-container">
+            <div class="messages" id="messages">
+                <div class="message bot-message">
+                    <div class="message-content">
+                        👋 Hello! I'm Jarvis. How can I assist you today?
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Input Area -->
+        <footer class="input-area">
+            <div class="input-wrapper">
+                <input 
+                    type="text" 
+                    id="commandInput" 
+                    class="input-field"
+                    placeholder="Type a command or use voice input..."
+                    autocomplete="off"
+                >
+                <button class="btn btn-voice" id="voiceBtn" title="Voice Input">
+                    🎤
+                </button>
+                <button class="btn btn-send" id="sendBtn" title="Send">
+                    ➤
+                </button>
+            </div>
+        </footer>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3>Quick Commands</h3>
+                <ul class="command-list">
+                    <li><button onclick="sendCommand('What time is it?')">⏰ Time</button></li>
+                    <li><button onclick="sendCommand('Tell me a joke')">😂 Joke</button></li>
+                    <li><button onclick="sendCommand('Search Python tutorials')">🔍 Search</button></li>
+                    <li><button onclick="sendCommand('Open Chrome')">🌐 Browser</button></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>History</h3>
+                <button class="btn btn-secondary" onclick="loadHistory()">📋 Load</button>
+                <button class="btn btn-danger" onclick="clearHistory()">🗑️ Clear</button>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Status</h3>
+                <div class="status-info">
+                    <p>Version: 1.0.0</p>
+                    <p id="commandCount">Commands: 0</p>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- History Modal -->
+    <div class="modal" id="historyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Conversation History</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="historyContent">
+                <!-- History will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
